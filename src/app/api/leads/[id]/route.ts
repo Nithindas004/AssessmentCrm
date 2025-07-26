@@ -29,8 +29,15 @@ export async function PUT(request: Request, { params }: { params: { id: string }
     const updatedLead = await Lead.findByIdAndUpdate(params.id, body, { new: true });
     
     return NextResponse.json(updatedLead, { status: 200 });
-  } catch (error: any) {
-    return NextResponse.json({ message: 'Error updating lead', error: error.message }, { status: 400 });
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error('Error updating lead:', error.message);
+      return NextResponse.json({ message: 'Error updating lead', error: error.message }, { status: 400 });
+    }
+    
+    // Handle cases where the thrown value is not an Error object
+    console.error('An unexpected error occurred:', error);
+    return NextResponse.json({ message: 'An unexpected error occurred' }, { status: 500 });
   }
 }
 
@@ -58,7 +65,15 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
     await Lead.findByIdAndDelete(params.id);
     
     return NextResponse.json({ message: 'Lead deleted successfully' }, { status: 200 });
-  } catch (error: any) {
-    return NextResponse.json({ message: 'Error deleting lead', error: error.message }, { status: 500 });
+  } catch (error: unknown) {
+    //   return NextResponse.json({ message: 'Error deleting lead', error: error.message }, { status: 500 });
+      if (error instanceof Error) {
+      console.error('Error deleting lead:', error.message);
+      return NextResponse.json({ message: 'Error deleting lead', error: error.message }, { status: 400 });
+    }
+    
+    // Handle cases where the thrown value is not an Error object
+    console.error('An unexpected error occurred:', error);
+    return NextResponse.json({ message: 'An unexpected error occurred' }, { status: 500 });
   }
 }

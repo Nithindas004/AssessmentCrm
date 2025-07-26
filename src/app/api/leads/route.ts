@@ -78,8 +78,16 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json(newLead, { status: 201 });
-  } catch (error: any) {
-    console.error('Error creating lead:', error);
-    return NextResponse.json({ message: 'Error creating lead', error: error.message }, { status: 400 });
+  } catch (error: unknown) {
+    // console.error('Error creating lead:', error);
+    // return NextResponse.json({ message: 'Error creating lead', error: error.message }, { status: 400 });
+    if (error instanceof Error) {
+      console.error('Error creating lead:', error.message);
+      return NextResponse.json({ message: 'Error creating lead', error: error.message }, { status: 400 });
+    }
+    
+    // Handle cases where the thrown value is not an Error object
+    console.error('An unexpected error occurred:', error);
+    return NextResponse.json({ message: 'An unexpected error occurred' }, { status: 500 });
   }
 }

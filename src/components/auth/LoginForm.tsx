@@ -48,6 +48,7 @@ export default function LoginForm() {
         router.push('/dashboard');
       }
     } catch (err) {
+        console.error("Error", err)
       setError("An unexpected error occurred.");
       setIsLoading(false);
     }

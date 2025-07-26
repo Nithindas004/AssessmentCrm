@@ -44,7 +44,7 @@ export const authOptions: NextAuthOptions = {
                     console.log('Password correct. Authentication successful!');
 
                     const { password, ...userWithoutPassword } = user.toObject();
-                    console.log("userWithoutPassword", userWithoutPassword)
+                    console.log("pas", password)
                     return userWithoutPassword;
 
                 } catch (error) {

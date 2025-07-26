@@ -33,6 +33,7 @@ export async function GET() {
       lost: lostLeads,
     });
   } catch (error) {
+      console.error("Error fetching stats:", error);
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
   }
 }
