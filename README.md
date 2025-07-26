@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mini CRM - Next.js & MongoDB
+
+A full-stack Mini CRM (Customer Relationship Management) platform built with Next.js, TypeScript, and MongoDB. The platform supports Admin and Salesperson roles for effective lead management.
+
+## Features
+
+-   **Authentication:** Secure login/registration for Admins and Salespersons.
+-   **Role-Based Access:** Protected routes and APIs based on user roles.
+-   **Lead Management:** Salespersons can CRUD their own leads.
+-   **Admin Dashboard:** Admins can view analytics and manage all leads.
+-   **Private Notes:** Admins can leave private notes for salespersons on specific leads.
+
+## Tech Stack
+
+-   **Framework:** Next.js (App Router)
+-   **Language:** TypeScript
+-   **Database:** MongoDB with Mongoose
+-   **Authentication:** NextAuth.js
+-   **Styling:** Tailwind CSS
+-   **UI Components:** shadcn/ui
+-   **Form Management:** React Hook Form with Zod
+-   **Data Fetching:** TanStack Query (React Query)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+-   Node.js (v18 or later)
+-   MongoDB instance (local or cloud like MongoDB Atlas)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Setup & Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1.  **Clone the repository:**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-## Learn More
+3.  **Set up environment variables:**
+    Create a `.env.local` file by copying the `.env.example` file.
+    ```bash
+    cp .env.example .env.local
+    ```
+    Update the `MONGODB_URI` and `NEXTAUTH_SECRET` in your `.env.local` file.
 
-To learn more about Next.js, take a look at the following resources:
+4.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The application will be available at `http://localhost:3000`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Dummy Credentials
 
-## Deploy on Vercel
+You can register new users or use the following pre-configured credentials to log in:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+-   **Admin:**
+    -   **Email:** `admin@example.com`
+    -   **Password:** `password123`
+-   **Salesperson:**
+    -   **Email:** `sales@example.com`
+    -   **Password:** `password123`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*(Note: You will need to create these users in your database first. A seeding script can be created for this purpose.)*
