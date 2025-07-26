@@ -6,6 +6,13 @@ import connectToDB from '@/lib/db';
 import Lead from '@/models/Lead';
 import User from '@/models/User';
 
+
+interface LeadQuery {
+  createdBy?: string;
+  status?: string;
+  $or?: Array<{ [key: string]: { $regex: string; $options: 'i' } }>;
+}
+
 // GET all leads (filtered by role)
 export async function GET(request: Request) {
   const session = await getServerSession(authOptions);
@@ -19,7 +26,7 @@ export async function GET(request: Request) {
   const status = searchParams.get('status');
   const searchQuery = searchParams.get('query');
 
-  const query: any = {};
+  const query: LeadQuery = {};
 
   // If user is a salesperson, only show leads they created.
   if (session.user.role === 'salesperson') {
