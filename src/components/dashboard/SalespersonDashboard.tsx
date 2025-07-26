@@ -11,13 +11,14 @@ import { PlusCircle } from 'lucide-react';
 import LeadsTable from '../leads/LeadsTable';
 import { LeadForm } from '../leads/LeadForm';
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
+import { Lead } from "@/types";
 
 export default function SalespersonDashboard() {
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [leadToEdit, setLeadToEdit] = useState<any>(null);
+  const [leadToEdit, setLeadToEdit] = useState<Lead | null>(null);
 
   const { data, isLoading, error } = useQuery({
     queryKey: ['leads', page, searchQuery, statusFilter],
@@ -26,7 +27,7 @@ export default function SalespersonDashboard() {
     // keepPreviousData: true,
   });
 
-  const handleEdit = (lead: any) => {
+  const handleEdit = (lead: Lead) => {
     setLeadToEdit(lead);
     setIsFormOpen(true);
   };

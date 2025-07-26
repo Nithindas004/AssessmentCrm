@@ -1,4 +1,5 @@
 // src/lib/api.ts
+import { Lead } from "@/types";
 
 // Define the shape of the lead data for forms
 export interface LeadFormData {
@@ -13,7 +14,7 @@ export interface LeadFormData {
 
 // Define the shape of the response from the GET /api/leads endpoint
 export interface LeadsResponse {
-  leads: any[]; // You can create a more specific ILead type later
+  leads: Lead[]; // You can create a more specific ILead type later
   totalPages: number;
   currentPage: number;
 }

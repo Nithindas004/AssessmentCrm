@@ -9,10 +9,11 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
 import { Textarea } from '@/components/ui/textarea';
+import { Lead } from "@/types";
 
 const AdminLeadsTable = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedLead, setSelectedLead] = useState<any>(null);
+  const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [noteContent, setNoteContent] = useState('');
   const queryClient = useQueryClient();
 
@@ -33,7 +34,7 @@ const AdminLeadsTable = () => {
     },
   });
 
-  const handleOpenNoteDialog = (lead: any) => {
+  const handleOpenNoteDialog = (lead: Lead) => {
     setSelectedLead(lead);
     setNoteContent(lead.notes || '');
   };

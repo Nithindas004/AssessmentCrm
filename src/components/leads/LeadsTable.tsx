@@ -10,12 +10,13 @@ import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { MoreHorizontal } from 'lucide-react';
+import { Lead } from "@/types";
 
 interface LeadsTableProps {
-  leads: any[];
+  leads: Lead[];
   isLoading: boolean;
   error: Error | null;
-  onEdit: (lead: any) => void;
+  onEdit: (lead: Lead) => void;
 }
 
 const LeadsTable = ({ leads, isLoading, error, onEdit }: LeadsTableProps) => {

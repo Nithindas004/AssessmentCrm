@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Lead } from "@/types";
 
 const leadSchema = z.object({
   fullName: z.string().min(2, 'Full name is required.'),
@@ -26,7 +27,7 @@ const leadSchema = z.object({
 interface LeadFormProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
-  leadToEdit?: any | null; // <-- ADD THIS PROP
+  leadToEdit?: Lead | null; // <-- ADD THIS PROP
 }
 
 export function LeadForm({ isOpen, setIsOpen, leadToEdit }: LeadFormProps) {
